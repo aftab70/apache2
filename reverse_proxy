@@ -1,0 +1,13 @@
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+
+create a virtual host 
+
+
+listen 81
+
+<VirtualHost *:81>
+
+        ProxyPass / http://127.0.0.1:8080/
+
+</VirtualHost>
