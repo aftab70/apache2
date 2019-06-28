@@ -56,3 +56,6 @@ systemctl restart apache2
 # Save and exit
 
 systemctl restart apache2
+
+referench url - https://www.digitalocean.com/community/tutorials/how-to-use-apache-http-server-as-reverse-proxy-using-mod_proxy-extension
+
