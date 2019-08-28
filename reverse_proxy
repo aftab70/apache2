@@ -18,9 +18,32 @@ listen 81
         
 </VirtualHost>
 
-#Save and exit
 
+#Save and exit
+-----------------------------------Apache reverse proxy with basic Auth ----------------------------------------------------
+
+sudo htpasswd -c /etc/apache2/.htpasswd first_USER
+sudo htpasswd /etc/apache2/.htpasswd secound_user
+    
+ <VirtualHost *:81>
+
+        ProxyPass / http://127.0.0.1:8080/
+        ProxyPassReverse / http://localhost:8080/
+        
+        <Proxy *>
+                Order deny,allow
+                Allow from all
+                Authtype Basic
+                Authname "Password Required"
+                AuthUserFile /etc/apache2/.htpasswd
+                Require valid-user
+        </Proxy>        
+        
+</VirtualHost>
+    
 systemctl restart apache2
+
+-----------------------------------------------------------------------------------------------------------------------------
 
 # To configure ssl certificate with apache web server use the sample code .
 
